@@ -10,7 +10,21 @@ accuracy, cost and latency for each, so you can see where the cheap pipeline lan
 ## Results
 
 <!-- results:start -->
-_Run it to populate._
+# Exa on FRAMES: accuracy, cost and latency, 2026-10-18
+
+First 100 FRAMES questions. Every row answers and judges with gpt-4o-mini, so only retrieval differs.
+
+| Pipeline | Accuracy | Exa published | Cost per question | p50 latency |
+|---|---|---|---|---|
+| Exa Fast | 0.400 | 0.375 | $0.0075 | 0.5s |
+| Exa Auto | 0.440 | 0.46 | $0.0075 | 6.2s |
+| Exa Fast + 3-way split | 0.310 | - | $0.0219 | 2.8s |
+
+## Honest limits
+
+- 100 questions, so accuracy differences under about 0.07 are inside sampling noise.
+- Exa's published numbers use their own answering setup. If the calibration rows land far from them, the comparison below them is what matters, not the absolute level.
+- Costs use Exa's reported per-request cost when the API returns it, else list price, plus gpt-4o-mini token cost.
 <!-- results:end -->
 
 ## Run it

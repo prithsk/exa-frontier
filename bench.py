@@ -32,7 +32,7 @@ def exa(query, kind, n=5):
 
 def llm(prompt, model="gpt-4o-mini"):
     from openai import OpenAI
-    r = OpenAI().chat.completions.create(model=model, temperature=0, messages=[{"role": "user", "content": prompt}])
+    r = OpenAI(max_retries=8).chat.completions.create(model=model, temperature=0, messages=[{"role": "user", "content": prompt}])
     u = r.usage; return r.choices[0].message.content.strip(), (u.prompt_tokens * 0.15 + u.completion_tokens * 0.6) / 1e6
 
 def answer(q, docs):
